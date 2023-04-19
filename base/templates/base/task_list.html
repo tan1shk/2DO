@@ -1,0 +1,47 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <div class="welcome">
+        <h1>Hello {{request.user|title}}</h1>
+        <h3 style="margin:0">You have <i>{{count}} </i> incomplete task{{ count|pluralize:"s" }}</h3>
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <a style = "padding: 30px 20px 0 0 ;" href="{% url 'logout' %}">Logout</a> 
+    {% else %}
+    <a href="{% url 'login' %}">Login</a> 
+    {% endif %}
+
+</div>
+
+<div id="tasklist" class="task-item-wrapper">
+    {% for task in tasks %}
+    <div class="task-wrapper">
+        <div class="task-title">
+            {% if task.complete %}
+            <a href="{% url 'uupdate-incomplete' task.pk %}"><div class="task-complete-icon"></div></a>
+            <i><s><a style="padding: 0 0 0 10px;" href="{% url 'update_view' task.pk %}">{{task}}</a></s></i>
+            {% else %}
+            <a href="{% url 'uupdate-complete' task.pk %}"><div class="task-incomplete-icon"></div></a>
+            <a style="padding: 0 0 0 10px;" href="{% url 'update_view' task.pk %}">{{task}}</a> 
+            {% endif %}
+        </div>
+        <div class="task-controls">
+            <a class="fa fa-trash" style="padding: 0 20px 0 0;" href="{% url 'delete_view' task.pk %}"></a>
+        </div>
+    </div>
+
+    {% empty %}
+    <div style="text-align: center; padding-bottom: 10px; line-height: 30px;">
+        <h3>No new tasks are created.</h3>
+    </div>
+    {% endfor %}
+    <hr>
+    <h3 class="add-item"><a style="text-decoration: none; color: #6fa7eb;" href="{% url 'create_view' %}">+ Add task</a></h3>
+</div>
+
+{% endblock content %}
+
+
+

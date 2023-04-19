@@ -1,0 +1,17 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <h1 style="padding-left: 20px">Register</h1>
+    <a style = "padding: 30px 20px 0 0 ;" href="{% url 'list_view' %}">&#8592; Back</a>
+</div>
+
+<div class="card-body">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="button" type="submit" value="signup">
+    </form> 
+</div>
+
+{% endblock content %}

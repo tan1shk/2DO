@@ -1,0 +1,18 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<div class="header-bar">
+    <a href="{% url 'list_view' %}">&#8592;  Back</a>
+</div>
+
+<div class="card-body">
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input class="button" type="submit" value="Save" />
+    </form>
+</div>
+
+
+
+{% endblock content %}
