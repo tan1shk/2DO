@@ -1,6 +1,5 @@
 # 2DO
 
-## installation
 
 ### 1 create environment 
     
