@@ -2,8 +2,6 @@
 
 ## installation
 
-install virtualenv
-
 ### 1 create environment 
     
     python -m venv [envname]
