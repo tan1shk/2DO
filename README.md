@@ -1,8 +1,5 @@
 # 2DO
 
-## installation
-
-install virtualenv
 
 ### 1 create environment 
     
